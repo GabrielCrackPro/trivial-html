@@ -47,11 +47,11 @@ function imprimirPreguntaYrespuesta() {
   const respuestas = pregunta.respuestas;
   cuerpoPregunta.innerHTML = `
         <h2>${pregunta.pregunta}</h2>
-        <ul class="lista-respuestas">
+        <ul class="lista-respuestas list-group">
         ${respuestas
           .map(
             (respuesta) => `
-                <li>
+                <li class="list-group-item black">
                 <input type="radio" name="respuesta" value="${respuesta}">
                 ${respuesta}
                 </li>
@@ -60,7 +60,7 @@ function imprimirPreguntaYrespuesta() {
           )
           .join("")}
         </ul>
-        <button onclick="verificarRespuesta()">Verificar</button>
+        <button onclick="verificarRespuesta()" class="btn btn-primary">Verificar</button>
     `;
 }
 imprimirPreguntaYrespuesta();
