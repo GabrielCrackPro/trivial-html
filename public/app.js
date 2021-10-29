@@ -1,5 +1,6 @@
 const cuerpoPregunta = document.querySelector(".cuerpo-pregunta");
 const contenedorBotones = document.querySelectorAll("#botones");
+const banner = document.querySelector(".banner");
 
 const preguntas = [
   {
@@ -72,14 +73,35 @@ function verificarRespuesta() {
     const respuesta = respuestaSeleccionada.value;
     const respuestaCorrecta = preguntas[0].respuestaCorrecta;
     if (respuesta === respuestaCorrecta) {
-      alert("Correcto");
+      banner.style.display = "block";
+      banner.innerHTML = `
+      <div class="alert alert-success">
+      <h2 class="text-center"><i class="fas fa-check-circle"></i> Correcto</h2>
+      </div>
+      `;
       puntos++;
       preguntas.shift();
-      imprimirPreguntaYrespuesta();
+      setTimeout(() => {
+        banner.style.display = "none";
+        imprimirPreguntaYrespuesta();
+      }, 1000);
     } else {
-      alert("Incorrecto");
+      banner.innerHTML = `
+      <div class="alert alert-danger">
+      <h2 class="text-center fw-bold"><i class="fas fa-times-circle"></i> Incorrecto</h2>
+      <p class="text-center fw-bold">La respuesta correcta era ${respuestaCorrecta}</p>
+      </div>
+      `;
+      banner.style.display = "block";
+      setTimeout(() => {
+        banner.style.display = "none";
+        imprimirPreguntaYrespuesta();
+      }, 1000);
       preguntas.shift();
-      imprimirPreguntaYrespuesta();
+      setTimeout(() => {
+        banner.style.display = "none";
+        imprimirPreguntaYrespuesta();
+      }, 2000);
     }
   } else {
     alert("Selecciona una respuesta");
