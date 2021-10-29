@@ -4,7 +4,25 @@
   font-family: sans-serif;
   box-sizing: border-box;
 }
-.black {
-  background-color: #1a1a1a;
+*::selection {
+  color: #6f2c8d;
+  background: #fff;
+}
+.main-color {
+  background: #8d44b6;
   color: #fff;
+}
+ul li:hover {
+  background: #6f2c8d;
+  color: #fff;
+}
+ul li input:hover {
+  cursor: pointer;
+}
+button:hover {
+  font-size: 20px;
+  transition: font-size 0.5s ease;
+}
+button:not(:hover) {
+  transition: font-size 0.5s ease;
 }
