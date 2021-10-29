@@ -62,7 +62,16 @@ function imprimirPreguntaYrespuesta() {
           .join("")}
         </ul>
         <button onclick="verificarRespuesta()" class="btn main-color text-white"><i class="fas fa-check"></i> Verificar</button>
+        <button onclick="eliminarRespuestaSeleccionada()" class="btn main-color text-white"><i class="fas fa-trash-alt"></i> Eliminar Selección</button>
     `;
+}
+// elejir respuesta al dar click en su elemento
+
+function eliminarRespuestaSeleccionada() {
+  const respuestas = document.querySelectorAll("input[type=radio]");
+  respuestas.forEach((respuesta) => {
+    respuesta.checked = false;
+  });
 }
 imprimirPreguntaYrespuesta();
 function verificarRespuesta() {
