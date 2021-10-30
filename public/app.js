@@ -62,16 +62,26 @@ function imprimirPreguntaYrespuesta() {
           .join("")}
         </ul>
         <button onclick="verificarRespuesta()" class="btn main-color text-white"><i class="fas fa-check"></i> Verificar</button>
-        <button onclick="eliminarRespuestaSeleccionada()" class="btn main-color text-white"><i class="fas fa-trash-alt"></i> Eliminar Selección</button>
+        <button onclick="eliminarRespuestaSeleccionada()" class="btn main-color text-white btn-eliminar-respuesta"><i class="fas fa-trash-alt"></i> Eliminar Selección</button>
     `;
 }
-// elejir respuesta al dar click en su elemento
 
 function eliminarRespuestaSeleccionada() {
   const respuestas = document.querySelectorAll("input[type=radio]");
   respuestas.forEach((respuesta) => {
     respuesta.checked = false;
   });
+}
+function mostrarPuntos() {
+  banner.innerHTML = `
+  <div class="alert alert-success">
+  <h2 class="text-center"><i class="fas fa-check-circle"></i> Has ganado ${puntos} puntos</h2>
+  </div>
+  `;
+  banner.style.display = "block";
+  setTimeout(() => {
+    banner.style.display = "none";
+  }, 1000);
 }
 imprimirPreguntaYrespuesta();
 function verificarRespuesta() {
@@ -113,12 +123,17 @@ function verificarRespuesta() {
       }, 2000);
     }
   } else {
-    alert("Selecciona una respuesta");
+    banner.innerHTML = `
+       <div class="alert alert-danger">
+      <h2 class="text-center fw-bold"><i class="fas fa-times-circle"></i> Debes elegir una respuesta</h2>
+      </div>
+    `;
+    banner.style.display = "block";
+    setTimeout(() => {
+      banner.style.display = "none";
+    }, 1000);
   }
 }
 if (preguntas.length === 0) {
   mostrarPuntos();
-}
-function mostrarPuntos() {
-  alert(`Felicidades, has ganado ${puntos} puntos`);
 }
