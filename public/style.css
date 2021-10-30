@@ -21,11 +21,12 @@ ul li input:hover {
   cursor: pointer;
 }
 button:hover {
-  font-size: 20px;
-  transition: font-size 0.5s ease;
+  font-size: 18px;
+  background: #6f2c8d;
+  transition: font-size background, font-size 0.5s ease;
 }
 button:not(:hover) {
-  transition: font-size 0.5s ease;
+  transition: background, font-size 0.5s ease;
 }
 footer {
   position: absolute;
